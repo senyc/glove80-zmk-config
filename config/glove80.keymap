@@ -99,43 +99,35 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
-            // |  =    |  1  |  2  |  3   |  4   |  5   |                                                 |  6   |   7   |   8   |  9   |   0   |   -  |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                                                 |  Y   |   U   |   I   |  O   |   P   |   \  |
-            // |  ESC  |  A  |  S  |  D   |  F   |  G   |                                                 |  H   |   J   |   K   |  L   |   ;   |   '  |
-            // |   `   |  Z  |  X  |  C   |  V   |  B   | LSHFT | LCTRL | LOWER | | LGUI  | RCTRL | RSHFT |  N   |   M   |   ,   |  .   |   /   | PGUP |
-            // | MAGIC | HOME| END | LEFT | RIGHT|      | BSPC  | DEL   | LALT  | | RALT  | RET   | SPACE |      |  UP   | DOWN  |  [   |   ]   | PGDN |
-
             bindings = <
-              &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                                 &kp F6  &kp F7      &kp F8      &kp F9      &kp F10
+              &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                                         &kp F6  &kp F7      &kp F8      &kp F9      &kp F10
               &kp DEL        &kp N1   &kp N2      &kp N3      &kp N4      &kp N5                                                                                     &kp N6  &kp N7  &kp N8      &kp N9      &kp N0      &kp BSLH
               &kp TAB        &kp Q    &kp W       &kp E       &kp R       &kp T                                                                                      &kp Y   &kp U   &kp I       &kp O       &kp P       &kp RET
               &kp ESC        &kp A    &kp S       &kp D       &kp F       &kp G                                                                                      &kp H   &kp J   &kp K       &kp L       &kp SEMI    &kp SQT
-              &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL            &kp LALT      &none      &kp RCTRL   &kp RSHFT            &kp N   &kp M   &kp COMMA   &kp DOT     &kp FSLH    &kp PG_UP
+              &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL            &kp LALT      &none      &kp RCTRL   &kp RSHFT    &kp N   &kp M   &kp COMMA   &kp DOT     &kp FSLH    &kp PG_UP
               &magic MAGIC 0 &kp HOME &kp END     &kp LEFT    &kp RIGHT           &kp SPACE   &layer_number_td     &kp LGUI      &kp MINUS  &layer_td   &kp BSPC             &kp DOWN  &kp UP    &kp LBKT    &kp RBKT    &kp PG_DN
             >;
         };
 
         lower_layer {
             bindings = <
-            &kp C_BRI_DN  &kp C_BRI_UP &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                                 &kp C_MUTE   &kp C_VOL_DN  &kp C_VOL_UP   &kp F11  &kp F12
-            &kp GRAVE     &trans       &trans      &trans      &trans     &trans                                                             &trans     &trans       &trans        &trans         &trans   &kp PSCRN
-            &kp EXCL      &kp LBKT     &kp LBRC    &kp RBRC    &kp RBKT   &kp QMARK                                                          &trans     &kp AMPS     &kp DQT       &kp AT_SIGN    &trans   &trans
-            &kp HASH      &kp CARET    &kp EQUAL   &kp UNDER   &kp DOLLAR &kp STAR                                                           &kp COLON  &kp PLUS     &kp LPAR      &kp RPAR       &trans   &trans
-            &kp TILDE     &kp LT       &kp PIPE    &kp MINUS   &kp GT     &kp BACKSLASH  &trans  &trans  &trans      &trans  &trans  &trans  &kp BSPC   &kp PERCENT  &trans        &trans         &trans   &trans
-            &trans        &trans       &trans      &trans      &trans                    &trans  &trans  &trans      &trans  &trans  &trans             &trans       &trans        &trans         &trans   &kp C_PWR
+            &kp C_BRI_DN  &kp C_BRI_UP &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                                      &kp C_MUTE   &kp C_VOL_DN  &kp C_VOL_UP   &kp F11   &kp F12
+            &trans        &trans       &trans      &trans      &trans     &trans                                                                &trans       &trans       &trans        &trans         &trans    &kp PSCRN
+            &trans        &kp LBKT     &kp LBRC    &kp RBRC    &kp RBKT   &kp QMARK                                                             &kp AMPS     &kp GRAVE    &kp TILDE     &trans         &kp EXCL  &trans
+            &kp HASH      &kp CARET    &kp EQUAL   &kp UNDER   &kp DOLLAR &kp STAR                                                              &kp COLON    &kp PLUS     &kp LPAR      &kp RPAR       &trans    &trans
+            &trans        &kp LT       &kp PIPE    &kp MINUS   &kp GT     &kp BACKSLASH  &kp DQT  &trans    &trans      &trans  &trans  &trans  &kp PERCENT  &kp AT_SIGN  &trans        &trans         &trans    &trans
+            &trans        &trans       &trans      &trans      &trans                    &trans   &kp BSPC  &trans      &trans  &trans  &trans               &trans       &trans        &trans         &trans    &kp C_PWR
             >;
         };
 
         number_layer {
           bindings = <
-            &trans     &trans     &trans     &trans      &trans                                                                                  &trans     &trans       &trans       &trans    &trans
-            &kp DEL    &none      &none      &none       &none       &none                                                            &none      &none      &kp PERCENT  &kp AT_SIGN  &none     &none
-            &kp EXCL   &kp LBKT   &kp LBRC   &kp RBRC    &kp RBKT    &kp STAR                                                         &kp COLON  &kp PLUS   &kp LPAR     &kp RPAR     &kp PIPE  &trans
-            &kp HASH   &kp N1     &kp N2     &kp N3      &kp N4      &kp N5                                                           &kp N6     &kp N7     &kp N8       &kp N9       &kp N0    &trans
-            &kp TILDE  &kp CARET  &kp EQUAL  &kp UNDER   &kp DOLLAR  &trans  &trans  &trans  &trans        &trans  &trans   &trans    &trans     &kp SPACE  &trans       &trans       &trans    &trans
-            &trans     &trans     &trans     &trans      &trans              &trans  &trans  &trans        &trans  &trans   &trans               &trans     &trans       &trans       &trans    &trans
+            &trans     &trans     &trans     &trans      &trans                                                                                              &trans        &trans       &trans       &kp F11    &kp F12
+            &trans     &kp LT     &kp PIPE   &kp MINUS   &kp GT      &kp QMARK                                                                  &trans       &trans        &trans       &trans       &trans     &trans
+            &trans     &kp LBKT   &kp LBRC   &kp RBRC    &kp RBKT    &kp STAR                                                                   &kp AMPS     &kp PLUS      &kp LPAR     &kp RPAR     &kp EXCL   &trans
+            &kp HASH   &kp N1     &kp N2     &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7        &kp N8       &kp N9       &kp N0     &trans
+            &trans     &kp CARET  &kp EQUAL  &kp UNDER   &kp DOLLAR  &kp BACKSLASH  &trans  &trans  &trans        &trans  &trans     &kp COLON  &kp PERCENT  &kp AT_SIGN   &trans       &trans       &trans     &trans
+            &trans     &trans     &trans     &trans      &trans                     &trans  &trans  &trans        &trans  &kp SPACE  &trans                  &trans        &trans       &trans       &trans     &kp C_PWR
           >;
         };
 
