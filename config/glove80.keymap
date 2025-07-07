@@ -115,7 +115,7 @@
             &trans        &trans       &trans      &trans      &trans     &trans                                                                &trans       &trans       &trans        &trans         &trans    &kp PSCRN
             &trans        &kp LBKT     &kp LBRC    &kp RBRC    &kp RBKT   &kp QMARK                                                             &kp AMPS     &kp GRAVE    &kp TILDE     &trans         &kp EXCL  &trans
             &kp HASH      &kp CARET    &kp EQUAL   &kp UNDER   &kp DOLLAR &kp STAR                                                              &kp COLON    &kp PLUS     &kp LPAR      &kp RPAR       &trans    &trans
-            &trans        &kp LT       &kp PIPE    &kp MINUS   &kp GT     &kp BACKSLASH  &kp DQT  &trans    &trans      &trans  &trans  &trans  &kp PERCENT  &kp AT_SIGN  &trans        &trans         &trans    &trans
+            &trans        &kp LT       &kp PIPE    &kp MINUS   &kp GT     &kp BACKSLASH  &kp DQT  &trans    &trans      &trans  &trans  &trans  &kp AT_SIGN  &kp PERCENT  &trans        &trans         &trans    &trans
             &trans        &trans       &trans      &trans      &trans                    &trans   &kp BSPC  &trans      &trans  &trans  &trans               &trans       &trans        &trans         &trans    &kp C_PWR
             >;
         };
@@ -126,7 +126,7 @@
             &trans     &kp LT     &kp PIPE   &kp MINUS   &kp GT      &kp QMARK                                                                  &trans       &trans        &trans       &trans       &trans     &trans
             &trans     &kp LBKT   &kp LBRC   &kp RBRC    &kp RBKT    &kp STAR                                                                   &kp AMPS     &kp PLUS      &kp LPAR     &kp RPAR     &kp EXCL   &trans
             &kp HASH   &kp N1     &kp N2     &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7        &kp N8       &kp N9       &kp N0     &trans
-            &trans     &kp CARET  &kp EQUAL  &kp UNDER   &kp DOLLAR  &kp BACKSLASH  &trans  &trans  &trans        &trans  &trans     &kp COLON  &kp PERCENT  &kp AT_SIGN   &trans       &trans       &trans     &trans
+            &trans     &kp CARET  &kp EQUAL  &kp UNDER   &kp DOLLAR  &kp BACKSLASH  &trans  &trans  &trans        &trans  &trans     &kp COLON  &kp AT_SIGN  &kp PERCENT   &trans       &trans       &trans     &trans
             &trans     &trans     &trans     &trans      &trans                     &trans  &trans  &trans        &trans  &kp SPACE  &trans                  &trans        &trans       &trans       &trans     &kp C_PWR
           >;
         };
