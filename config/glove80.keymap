@@ -15,34 +15,53 @@
 
 // layers
 #define DEFAULT 0
-#define LOWER 1
-#define NUMBER 2
-#define MAGIC 3
-#define FACTORY_TEST 4
+#define NUM 1
+#define SYM 2
+#define FUNC 3
+#define MAGIC 4
+#define FACTORY_TEST 5
 
 / {
     behaviors {
-        to_lower: to_lower {
-            compatible = "zmk,behavior-to";
-            label = "TO_LOWER";
-            #binding-cells = <1>;
-        };
-        to_number: to_number {
-            compatible = "zmk,behavior-to";
-            label = "TO_NUMBER";
-            #binding-cells = <1>;
-        };
-
-        magic: magic_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MAGIC_HOLD_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&rgb_ug_status_macro>;
-        };
+      hml: home_row_mod_left {
+             compatible = "zmk,behavior-hold-tap";
+             #binding-cells = <2>;
+             flavor = "balanced";
+             require-prior-idle-ms = <150>;
+             tapping-term-ms = <280>;
+             quick-tap-ms = <175>;
+             bindings = <&kp>, <&kp>;
+             hold-trigger-key-positions = <39 40 41 42 43 61 62 63 64 65 66>;
+             hold-trigger-on-release;
+       };
+       hmr: home_row_mod_right {
+             compatible = "zmk,behavior-hold-tap";
+             #binding-cells = <2>;
+             flavor = "balanced";
+             require-prior-idle-ms = <150>;
+             tapping-term-ms = <280>;
+             quick-tap-ms = <175>;
+             bindings = <&kp>, <&kp>;
+             hold-trigger-key-positions = <34 35 36 37 38 56 57 58 59 60>;
+             hold-trigger-on-release;
+       };
+       magic: magic_hold_tap {
+           compatible = "zmk,behavior-hold-tap";
+           label = "MAGIC_HOLD_TAP";
+           #binding-cells = <2>;
+           flavor = "tap-preferred";
+           tapping-term-ms = <200>;
+           bindings = <&mo>, <&rgb_ug_status_macro>;
+       };
     };
 
+    conditional_layers {
+          compatible = "zmk,conditional-layers";
+          tri_layer {
+              if-layers = <1 2>;
+              then-layer = <3>;
+          };
+    };
     macros {
         rgb_ug_status_macro: rgb_ug_status_macro_0 {
             label = "RGB_UG_STATUS";
@@ -94,35 +113,45 @@
 
         default_layer {
             bindings = <
-              &kp F1         &kp F2   &kp F3      &kp F4      &kp F5                                                                                                      &kp F6  &kp F7      &kp F8      &kp F9      &kp F10
-              &kp DEL        &kp N1   &kp N2      &kp N3      &kp N4      &kp N5                                                                                  &kp N6  &kp N7  &kp N8      &kp N9      &kp N0      &kp BSLH
-              &kp TAB        &kp Q    &kp W       &kp E       &kp R       &kp T                                                                                   &kp Y   &kp U   &kp I       &kp O       &kp P       &kp RET
-              &kp ESC        &kp A    &kp S       &kp D       &kp F       &kp G                                                                                   &kp H   &kp J   &kp K       &kp L       &kp SEMI    &kp SQT
-              &kp GRAVE      &kp Z    &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL      &kp LALT      &kp RALT      &kp RCTRL   &kp RSHFT    &kp N   &kp M   &kp COMMA   &kp DOT     &kp FSLH    &kp PG_UP
-              &magic MAGIC 0 &kp HOME &kp END     &kp LEFT    &kp RIGHT           &kp SPACE   &mo NUMBER  &kp LGUI      &kp MINUS     &mo LOWER      &kp BSPC             &kp DOWN  &kp UP    &kp LBKT    &kp RBKT    &kp PG_DN
+              &none          &none    &none        &none        &none                                                                                                           &none          &none       &none        &none      &none
+              &none          &none    &none        &none        &none         &none                                                                                     &none   &none          &none       &none        &none      &none
+              &none          &kp Q    &kp W        &kp E        &kp R         &kp T                                                                                     &kp Y   &kp U          &kp I       &kp O        &kp P      &none
+              &none          &kp A    &hml LGUI S  &hml LALT D  &hml LCTRL F  &kp G                                                                                     &kp H   &hmr RCTRL J   &hmr RALT K &hmr RGUI L  &kp ENTER  &none
+              &none          &kp Z    &kp X        &kp C        &kp V         &kp B         &none       &none    &none     &none     &none    &none                     &kp N   &kp M          &kp COMMA   &kp PERIOD   &kp SLASH  &none
+              &magic MAGIC 0 &none    &none        &none        &none                       &kp SPACE   &mo NUM  &kp TAB   &kp BSPC  &mo SYM  &mt RSHIFT ESC                    &none          &none       &none        &none      &none
             >;
         };
 
-        lower_layer {
+        num_layer {
             bindings = <
-            &kp C_BRI_DN  &kp C_BRI_UP &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                                      &kp C_MUTE   &kp C_VOL_DN  &kp C_VOL_UP   &kp F11   &kp F12
-            &trans        &trans       &trans      &kp HASH    &trans     &trans                                                                &trans       &trans       &trans        &trans         &trans    &kp PSCRN
-            &trans        &kp LBKT     &kp LBRC    &kp RBRC    &kp RBKT   &kp QMARK                                                             &kp AT       &kp GRAVE    &kp TILDE     &trans         &kp EXCL  &trans
-            &trans        &kp CARET    &kp EQUAL   &kp UNDER   &kp DOLLAR &kp STAR                                                              &kp COLON    &kp PLUS     &kp LPAR      &kp RPAR       &trans    &trans
-            &trans        &kp LT       &kp PIPE    &kp MINUS   &kp GT     &kp BACKSLASH  &kp DQT  &trans    &trans      &trans  &trans  &trans  &kp AMPS     &kp PERCENT  &trans        &trans         &trans    &trans
-            &trans        &trans       &trans      &trans      &trans                    &trans   &kp BSPC  &trans      &trans  &trans  &trans               &trans       &trans        &trans         &trans    &kp C_PWR
+              &none         &none      &none        &none        &none                                                                                                                     &none          &none        &none         &none        &none
+              &none         &none      &none        &none        &none          &none                                                                                          &none       &none          &none        &none         &none        &none
+              &none         &kp EXCL   &kp DQT      &kp HASH     &kp EQL        &kp STAR                                                                                       &kp PERCENT &kp PLUS       &kp LPAR     &kp RPAR      &kp SQT      &none
+              &none         &kp N1     &hml LGUI N2 &hml LALT N3 &hml LCTRL N4  &kp N5                                                                                         &kp N6      &hmr RCTRL N7  &hmr RALT N8 &hmr RGUI N9  &kp N0       &none
+              &none         &kp QMARK  &kp PIPE     &kp DOLLAR   &kp UNDER      &kp TILDE   &none       &none       &none             &none      &none          &none          &kp CARET   &kp MINUS      &kp COMMA    &kp PERIOD    &kp SLASH    &none
+              &none         &none      &none        &none        &none                      &kp SPACE   &mo NUM     &kp TAB           &kp BSPC   &mo SYM        &mt RSHIFT ESC             &none          &none        &none         &none        &none
             >;
         };
-
-        number_layer {
-          bindings = <
-            &trans     &trans     &trans     &trans      &trans                                                                                              &trans        &trans       &trans       &kp F11    &kp F12
-            &trans     &kp LT     &kp PIPE   &kp HASH    &kp GT      &kp QMARK                                                                  &trans       &kp GRAVE     &kp TILDE    &trans       &trans     &trans
-            &trans     &kp LBKT   &kp LBRC   &kp RBRC    &kp RBKT    &kp STAR                                                                   &kp AT       &kp PLUS      &kp LPAR     &kp RPAR     &kp EXCL   &trans
-            &trans     &kp N1     &kp N2     &kp N3      &kp N4      &kp N5                                                                     &kp N6       &kp N7        &kp N8       &kp N9       &kp N0     &trans
-            &trans     &kp CARET  &kp EQUAL  &kp UNDER   &kp DOLLAR  &kp BACKSLASH  &trans  &trans  &trans        &trans  &trans     &kp COLON  &kp AMPS     &kp PERCENT   &trans       &trans       &trans     &kp DQT
-            &trans     &trans     &trans     &trans      &trans                     &trans  &trans  &trans        &trans  &kp SPACE  &trans                  &trans        &trans       &trans       &trans     &kp C_PWR
-          >;
+        // need at sign
+        sym_layer {
+            bindings = <
+              &none         &none      &none           &none            &none                                                                                                                        &none              &none            &none              &none        &none
+              &none         &none      &none           &none            &none              &none                                                                                       &none         &none              &none            &none              &none        &none
+              &none         &kp EXCL   &kp DQT         &kp AMPS         &kp EQL            &kp AT_SIGN                                                                                 &kp PERCENT   &kp PLUS           &kp LPAR         &kp RPAR           &kp SQT      &none
+              &none         &kp LBKT   &hml LGUI RBKT  &hml LALT LBRC   &hml LCTRL RBRC    &kp BSLH                                                                                    &kp LT        &hmr RCTRL COLON   &hmr RALT GT     &hmr RGUI SEMI     &kp ENTER    &none
+              &none         &kp QMARK  &kp PIPE        &kp DOLLAR       &kp UNDER          &kp GRAVE     &none       &none    &none        &none       &none        &none              &kp CARET     &kp MINUS          &kp COMMA        &kp PERIOD         &kp SLASH    &none
+              &none         &none      &none           &none            &none                            &kp SPACE   &mo NUM  &kp TAB      &kp BSPC    &mo SYM      &mt RSHIFT ESC                   &none              &none            &none              &none        &none
+            >;
+        };
+        func_layer {
+            bindings = <
+              &none         &none          &none           &none            &none                                                                                                                           &none           &none          &none         &none        &none
+              &none         &none          &none           &none            &none             &none                                                                                             &none       &none           &none          &none         &none        &none
+              &none         &kp F1         &kp F2          &kp F3           &kp F4            &kp F5                                                                                            &kp F6      &kp F7          &kp F8         &kp F2        &kp F2       &none
+              &none         &mt LGUI PG_DN &mt LALT PG_UP  &mt  LCTRL HOME  &mt LSHIFT END    &kp C_PP                                                                                          &kp LEFT    &kp DOWN        &kp UP         &kp RIGHT     &kp PSCRN    &none
+              &none         &kp DEL        &kp F11         &kp C_PREV       &kp C_NEXT        &kp F12         &none       &none    &none            &none       &none          &none            &kp C_STOP  &kp C_VOL_DN    &kp C_VOL_UP   &none         &kp C_PWR    &none
+              &none         &none          &none           &none            &none                             &kp SPACE   &mo NUM  &kp TAB          &kp BSPC    &mo SYM        &mt RSHIFT ESC               &none           &none          &none         &none        &none
+            >;
         };
 
         magic_layer {
