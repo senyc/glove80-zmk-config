@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./build.sh:*)",
+      "Bash(bash:*)",
+      "WebSearch",
+      "WebFetch(domain:docs.moergo.com)",
+      "Read(//media/**)",
+      "Read(//run/media/**)",
+      "Bash(ls /media/)"
+    ]
+  }
+}
